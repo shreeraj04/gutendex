@@ -1,0 +1,21 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from config import settings
+
+engine = create_engine(settings.DATABASE_URL)
+# engine = create_engine(
+#     "postgresql://",
+#     username="postgres",
+#     password="Harshitha@04",
+#     host="localhost",
+#     port="5432",
+#     database="gutenberg"
+# )
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
