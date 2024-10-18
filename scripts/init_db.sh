@@ -7,6 +7,6 @@ source .env
 createdb gutenberg
 
 # Restore the database from the dump file
-pg_restore -d gutenberg dump_file.dump
+pg_restore -d gutenberg gutenberg.dump
 
 echo "Database initialized successfully!"
